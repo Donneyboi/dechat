@@ -1,0 +1,839 @@
+ <!DOCTYPE html>
+<html>
+<head>				
+	<meta charset="utf-8">
+	<script type="text/javascript" src="java/jquery-3.6.0.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/css.css">
+	<link rel="stylesheet" type="text/css" href="css/all.css">
+	<link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+	<script type="text/javascript" src="java/sweetalert-dev.js"></script>
+	
+	<title>Dechat</title>
+</head>
+<body>
+	
+	<main>
+
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$('.loadcheck').load('checklogin.php');
+		})
+	</script>
+
+	<div class="loadcheck"></div>
+
+		<div class="forregister">
+
+				<div class="getstart">
+			<button type="" onclick="showreg()">Get start</button>
+		</div>
+		
+		<script type="text/javascript">
+			 function showreg () {
+     //document.getElementsByClassName('getstart')[0].style.display="none";
+       //document.getElementsByClassName('signup')[0].style.display="block";
+     $('.getstart').fadeOut(1000);
+     $('.signup').fadeIn(2000);
+   }
+		</script>
+
+			<div class="signup">
+
+
+				  <script type="text/javascript">
+				$(document).ready(function () {
+				$('.signupform').on('submit',function (para) {
+					para.preventDefault();
+					$.ajax({
+				url:"processreg.php",
+                 type:"post",
+                 data:new FormData(this),
+                 contentType:false,
+                 cache:false,
+                 processData:false,
+                 beforeSend:function(){
+                  $('.showx').html("wait");
+                 },
+                 success:function(para2){
+                 	$('.showx').html(para2);
+                 },
+                 error:function(){
+                 	alert('error typing to processData');
+                 }
+
+					})
+				});
+				})
+			</script>
+				<form class="signupform" action="processreg.php" method="post">
+                  <span class="showx"></span>
+					<div class="firstnamediv">
+						<h3 class="h3">What Your Name ?</h3>
+						<div id="inputdiv">
+							<input type="text" name="firstname" placeholder="firstname">
+							<input type="text" name="lastname" placeholder="lastname">
+						</div>
+						<button class="sb semaildiv" type="button">Next</button>
+					</div>
+<!-------------------------------------------end----------------------------------->
+
+						<div  class="emaildiv">
+						<h3 class="h3">Email address </h3>
+						<div id="inputdiv2">
+							<input  type="text" name="email" placeholder="email">
+						
+						</div>
+					<div class="divbt">
+							<button class="sb closemail" type="button">Back</button>
+								<button class="sb showcountry" type="button">Next</button>
+					</div>
+					</div>
+<!-------------------------------------------end----------------------------------->
+					<div class="countrydiv">
+						<h3 class="h3">Select your country</h3>
+						<div id="inputdiv2">
+						<select name="country">
+							<option value="">country</option>
+								<option value="usa">USA</option>
+								<option value="NIgeria">Nigeria</option>
+						</select>
+						
+						</div>
+					<div class="divbt">
+							<button class="sb closecountry" type="button">Back</button>
+								<button class="sb showdate" type="button">Next</button>
+					</div>
+					</div>
+					<!-------------------------------------------end----------------------------------->
+						<div class="datediv">
+						<h3 class="h3">Date of birth</h3>
+						<div id="inputdiv">
+						<input type="date" name="date" value="date" value="">
+							<select name="gender">
+								<option value="">Gender</option>
+								<option value="Male">Mela</option>
+								<option value="Female">Female</option>
+							</select>
+						
+						</div>
+					<div class="divbt">
+							<button class="sb closedate" type="button">Back</button>
+								<button class="sb showpass" type="button">Next</button>
+					</div>
+					</div>
+
+<!----------------------------------------------------------end-------------------------------->
+						<div class="password">
+						<h3 class="h3">password</h3>
+						<div id="inputdiv">
+							<input type="password" name="password" placeholder="password">
+							<input type="password" name="cpassword" placeholder="password">
+						</div>
+							<div class="divbt">
+							<button class="sb closepass" type="button">Back</button>
+								<button class="sb showfinish" type="button">Next</button>
+					</div>
+					</div>
+
+
+
+
+					<!-------------------------------------------end----------------------------------->
+
+						<div class="finishdiv">
+						    <h3 class="h3">Finish Signing</h3>
+						    <p class="myp">By tapping finish your agree to our Term,Data Policy and cookies Policy</p>
+						    <input type="submit" name="submit" value="Create" 
+						    style="width: 50%;height: 35px; border-radius: 20px;
+						    font-family: inter;color: white;background: rgb(34, 2, 49);
+						     outline: none;border: none;">
+					
+			
+							<button class="sb closefinis" type="button">Back</button>
+							
+				
+					</div>
+					
+				</form>
+				<span class="myspann showlogin"> Already Have an Account</span>
+
+
+			</div>
+			<!----------------------------------------THis are is for login form------------------------------------------>
+			<div class="sigin">
+  <script type="text/javascript">
+				$(document).ready(function () {
+				$('.loginform').on('submit',function (para) {
+					para.preventDefault();
+					$.ajax({
+				url:"processlogin.php",
+                 type:"post",
+                 data:new FormData(this),
+                 contentType:false,
+                 cache:false,
+                 processData:false,
+                 beforeSend:function(){
+                  $('.showx').html("wait");
+                 },
+                 success:function(para2){
+                 	$('.showx').html(para2);
+                 },
+                 error:function(){
+                 	alert('error typing to processData');
+                 }
+
+					})
+				});
+				})
+			</script>
+
+
+				<div class="limage"><img src="img/2022_07_03_09_42_IMG_2607.png"></div>
+				<form class="loginform" action="processlogin.php"  method="post" >
+
+			          <input type="email" name="email" placeholder="email">
+							<input type="password" name="password" placeholder="password">
+						  	<span class="showx" style="color: red;"></span>
+						    <input type="submit" name="login" value="Login" 
+						    style="width: 50%;height: 35px; border-radius: 20px;
+						    font-family: inter;color: white;background: rgb(34, 2, 49);
+						     outline: none;border: none;">
+					
+			
+							
+							
+				
+					
+				</form>
+				<span class="myspann showreg"> Don't Have an Account</span>
+			</div>
+		</div>
+		<!---------------------------------------------------------HOMEPAGE--------------------------------------------------------------------------------->
+		<div class="homepage">
+			<section class="sec1">
+				<!--------------------------------------------------------home------------------------------------------------------------------------------->
+			<div class="home">
+				<div class="homehead">
+			<i class="fa fa-bars showsidediv"></i>
+		<h3>Social Network</h3	>
+		<span class="fa fa-search showseach"></span>
+				</div>
+				<div class="homebody">
+
+					<!------------------------------------------------overflow--------------------------------------------------->
+                            <div class="container" >
+                           <div class="conover">
+                         <label class="addstories fa fa-camera" for="stpic" style="display: flex;
+                         align-items: center;
+                         justify-content: center;"></label>
+                         <p>Add photo</p>
+                           <script type="text/javascript">
+                           	
+                           		
+                        
+				$(document).ready(function () {
+				$('.storieform').on('change',function (para) {
+					para.preventDefault();
+					$.ajax({
+				url:"processstorie.php",
+                 type:"post",
+                 data:new FormData(this),
+                 contentType:false,
+                 cache:false,
+                 processData:false,
+                 beforeSend:function(){
+                  //$('.overflow').html("wait");
+                 },
+                 success:function(para2){
+                 	$('.loadsss').html(para2);
+       
+                 },
+                 error:function(){
+                 	alert('error typing to processData');
+                 }
+
+					})
+				});
+				})
+				
+				  	
+
+
+			</script>
+
+			<div class="loadsss"></div>
+                         <form action="processstorie.php" method="post" enctype="multipart/form-data" class="storieform">
+                         	<input type="file" name="myfile[]" accept="" multiple style="display: none;" id="stpic">
+                         
+                         	<!-----
+                         	<div class="submitstorie">
+                         		<script type="text/javascript">
+                         			$(document).ready(function () {
+                         				$('.submitstorie').load('processstorie.php');
+                         			})
+                         		</script>
+                         		
+                         	</div>
+                         	---->
+                         </form>
+                     </div>
+					<div class="bigoverflow">
+					<div class="overflow">
+
+				<script type="text/javascript">
+	$(document).ready(function(){
+		$('.overflow').load('showallstories.php');
+
+	})
+</script>
+										
+
+
+						</div>
+					</div>
+                     </div>
+
+               
+<!---------------------------------------------------------------postingdiv-------------------------------------------------------------->
+                <div class="showallpost"></div>
+                	<script type="text/javascript">
+                		function swowall () {
+
+                		$(document).ready(function(){
+                			$('.showallpost').load('showallpost.php');
+                		})
+                			}
+                			//setInterval(swowall,10000);
+                			swowall();
+                	
+                	</script>
+                
+                		
+          
+
+
+
+                  <!------------------------------------------------------end------------------------------------------>
+				</div>
+			</div>
+		<!-----------------------------------------------------------------------------post---------------------------------------------------------------------->
+			<div class="post">
+				  <script type="text/javascript">
+				$(document).ready(function () {
+				$('.postbody').on('submit',function (para) {
+					para.preventDefault();
+					$.ajax({
+				url:"processpost.php",
+                 type:"post",
+                 data:new FormData(this),
+                 contentType:false,
+                 cache:false,
+                 processData:false,
+                 beforeSend:function(){
+                  $('.ccc').html("wait");
+                 },
+                 success:function(para2){
+                 	$('.ccc').html(para2);
+                 	swowall();
+                 	if (para2=="p"){
+                 		$('.home').show();
+                 		$('.post').hide();
+                 	}
+                 
+                 },
+                 error:function(){
+                 	alert('error typing to processData');
+                 }
+
+					})
+				});
+				})
+			</script>
+<div class="ccc" style="background-color: red; position: absolute;
+top: 0px; width: 100%; height: 100vh;display: none;"></div>
+				<div class="posthead">Creat a post</div>
+				<form class="postbody" action="processpost.php" method="post" enctype="multipart/form-data">
+					<textarea name="message" placeholder=" what is happing"></textarea>
+					<label class="fa fa-camera" for="cm"></label>
+					<input type="file" name="myfile[]" id="cm" style="display: none;" accept="" multiple>
+					<button type="submit" name="s">Post</button>
+				</form>
+			</div>
+			<!-------------------------------------------------------------------chat--------------------------------------------------------------->
+			<div class="chat">
+
+				<div class="chathead"><h3>Chat</h3></div>
+				
+				<div class="chatbody">
+
+					<div class="chatsmallbody">
+						<div class="chatimage"></div>
+						<div class="chatname">
+							<h3>max</h3>
+							<span>awfar</span>
+						</div>
+						<div class="chatbox">
+							<p>12:30</p>
+							<span>1</span>
+						</div>
+					</div>
+				</div>
+			</div>	
+			</section>
+
+
+
+
+
+		   <section class="sec2">
+		   	<label class="fa fa-home h"></label>
+		  <i class="fa fa-plus p"></i>
+		  <label class="fa fa-comment c"></label>
+		   </section>
+		</div>
+		<!-------------------------------------------------------------------------------------end------------------------------------------------------------------->
+
+		<div class="sidediv">
+			<div class="sidedivhed"><i class="fa fa-times hidesidediv"></i><h5>Setting</h5></div>
+			<div class="settingimagename">
+<!-----------------------------------------profile pic code--------------------------------------------------->
+					<script type="text/javascript">
+				
+                function k() {
+                    
+                
+                $(document).ready(function () {
+
+					       $.ajax({
+				          url:"profilepic.php",
+                 type:"get",
+                 data:"nav=link",
+                 contentType:false,
+                 cache:false,
+                 processData:false,
+                 beforeSend:function(){
+                  //$('.showx').html("wait");
+                 },
+                 success:function(para2){
+                 document.getElementById('pic').src="profile/"+para2;
+                 },
+                 error:function(){
+                 	alert('error typing to processData');
+                 }
+
+					})
+				});
+				}
+                k();
+			</script>
+				<div class="Settingimage"><img id="pic"></div>
+				
+				<h3 id="namex">
+					<script type="text/javascript">
+						$(document).ready(function () {
+							$('#namex').load('loadname.php');
+						})
+					</script>
+				</h3>
+			</div>
+			           <script type="text/javascript">
+                $(document).ready(function () {
+                $('.chanpic').on('change',function (para) {
+                    para.preventDefault();
+                    $.ajax({
+                url:"processprofilepic.php",
+                 type:"post",
+                 data:new FormData(this),
+                 contentType:false,
+                 cache:false,
+                 processData:false,
+                 beforeSend:function(){
+                  //$('.showx').html("wait");
+                 },
+                 success:function(para2){
+                    $('.vv').html(para2);
+                    k();
+                 },
+                 error:function(){
+                    alert('error typing to processData');
+                 }
+
+                    })
+                });
+                })
+            </script>
+            <div class="vv"></div>
+			<form action="processprofilepic.php" method="post" enctype="multipart/form-data" class="chanpic">
+				<input type="file" name="tpic" style="display: none;" id="cpic">
+			</form>
+			<!------------------------------------------------------end----------------------------------------------------->
+			<div class="settingc">
+			<i class="fa fa-key showaccount" onclick="openacount('open')"><span>Account</span></i>
+			<i class="fa fa-comments  showchat"><span>Chat</span></i>
+
+			    <script type="text/javascript">
+                $(document).ready(function () {
+                $('.reader').on('click',function (para) {
+                    para.preventDefault();
+                    $.ajax({
+                url:"endnot.php",
+                 type:"get",
+                 data:"nav=link",
+                 contentType:false,
+                 cache:false,
+                 processData:false,
+                 beforeSend:function(){
+                  //$('.showx').html("wait");
+                 },
+                 success:function(para2){
+                    $('.loadred').html(para2);
+                   
+                 },
+                 error:function(){
+                    alert('error typing to processData');
+                 }
+
+                    })
+                });
+                })
+            </script>
+                
+           <i class="fa fa-bell shownoti reader"><span class="loadred">
+           	<script type="text/javascript">
+           		function mmmm () {  	
+           		$(document).ready(function () {
+           			$('.loadred').load('seen.php');
+           		})
+           			}
+           			mmmm();
+           			setInterval(mmmm,3000);
+           	</script>
+           </span><span>Notification</span></i>
+
+            <i class="fa fa-users" onclick="showfrind('open')"><span onclick="showfrind('open')">Friends</span></i>
+
+        	<i class="fa fa-users"><span>invit a friend</span></i>
+
+            <i class="fa fa-question-circle "><span>Help</span></i>
+			</div>
+			<div class="logoutdiv">
+				<button class="fa fa-sign-out-alt"><a href="logout.php">logout</a></button>
+			</div>
+		</div>
+
+		<!---------------------------------------------------------------------search------------------------------------------------->
+		<div class="search">
+			    <script type="text/javascript">
+                $(document).ready(function () {
+                $('.searchhead').on('keyup',function (para) {
+                    para.preventDefault();
+                    $.ajax({
+                url:"processsearch.php",
+                 type:"post",
+                 data:new FormData(this),
+                 contentType:false,
+                 cache:false,
+                 processData:false,
+                 beforeSend:function(){
+                  //$('.showx').html("wait");
+                 },
+                 success:function(para2){
+                    $('.searchbody').html(para2);
+                   
+                 },
+                 error:function(){
+                    alert('error typing to processData');
+                 }
+
+                    })
+                });
+                })
+            </script>
+            <div class="sse"></div>
+		<form class="searchhead" action="processsearch.php" method="post">
+			<i class="fa fa-arrow-left hidesearch"></i>
+			<input type="search" name="search" placeholder="search">
+		</form>
+			<div class="searchbody">
+				<script type="text/javascript">
+					$(document).ready(function () {
+						$('.searchbody').load('processsearch.php');
+					})
+				</script>	
+			</div>
+		</div>
+		<!------------------------------------------------notification---------------------------------------------------------------->
+		              <div class="notification">
+		           <div class="notificationhead">
+		           	<i class=" fa fa-times hidenoti"></i>
+		           	<h3>Notification</h3>
+		           </div>
+
+		           <div class="notificationbody">
+		          <script type="text/javascript">
+		          	$(document).ready(function () {
+		          		$('.notificationbody').load('loadnotification.php');
+		          	})
+		          </script>
+		           </div>
+
+		              </div>
+<!----------------------------------------------------this are is for show account -------------------------------->
+		              <div class="account">
+
+		              	<div class="accounthead">
+		              		<script type="text/javascript">
+				
+                function k() {
+                    
+                
+                $(document).ready(function () {
+
+					       $.ajax({
+				          url:"profilepic.php",
+                 type:"get",
+                 data:"nav=link",
+                 contentType:false,
+                 cache:false,
+                 processData:false,
+                 beforeSend:function(){
+                  //$('.showx').html("wait");
+                 },
+                 success:function(para2){
+                 document.getElementsByClassName('pic')[0].src="profile/"+para2;
+                 },
+                 error:function(){
+                 	alert('error typing to processData');
+                 }
+
+					})
+				});
+				}
+                k();
+			</script>
+		<img src="" class="pic">
+		<!------------------------------------------i just kept the label form up--------------------------------------------->
+		<label for="cpic" class="fa fa-camera" style="position: absolute; 
+		left: 300px; width: 30px; height: 30px; border-radius: 30px; background: black;
+		color: white; display: flex;align-items: center; justify-content: center;" ></label>
+		<h3 id="namxc">
+			<script type="text/javascript">
+						$(document).ready(function () {
+							$('#namxc').load('loadname.php');
+						})
+					</script>
+		</h3>
+		              	</div>
+
+		              	<!-------------------------------------------------------this area is for account name-------------------->
+		              	<div class="accountbody">
+
+		               <script type="text/javascript">
+                $(document).ready(function () {
+                $('.accountform').on('click',function (para) {
+                    para.preventDefault();
+                    $.ajax({
+                url:"updatename.php",
+                 type:"post",
+                 data:new FormData(this),
+                 contentType:false,
+                 cache:false,
+                 processData:false,
+                 beforeSend:function(para2){
+                  //$('.showx').html("wait");
+                 },
+                 success:function(para2){
+                    if(para2=="s"){
+                    	$('.accountform').hide();
+                   //document.getElementsByClassName('accountform').style.display="none";
+                    }
+                   
+                 },
+                 error:function(){
+                    alert('error typing to processData');
+                 }
+
+                    })
+                });
+                })
+                    
+            </script>
+		         <div class="columa" onclick="showufirname('open')" id="firtn">
+		              			<p>Name</p>
+		              		<h3 id="namexxx">
+					<script type="text/javascript">
+						$(document).ready(function () {
+							$('#namexxx').load('loadname.php');
+						})
+					</script>
+				</h3>
+				
+		       </div>
+               
+
+		       <form class="accountform" action="updatename.php" method="post">
+		       	<input type="text" name="firstname" placeholder="firstname">
+		       	  	<input type="text" name="lastname" placeholder="lastname">
+		       	  	<input type="password" name="password" placeholder="password">
+		       	  <input type="submit" name="sub" value="Update" 
+						    style="width: 50%;height: 35px; border-radius: 20px;
+						    font-family: inter;color: white;background: rgb(34, 2, 49);
+						     outline: none;border: none;">
+
+						     <input type="button" name="sub" value="cancle" 
+						    style="width: 50%;height: 35px; border-radius: 20px;
+						    font-family: inter;color: white;background: rgb(34, 2, 49);
+						     outline: none;border: none;" onclick="showufirname('close')">
+
+
+		       </form>
+
+		   <!------------------------------------------------email-------------------------------------->
+
+		             <div class="columa" onclick="showem('open')">
+		                
+				          <p>email</p>
+				          <h3 id="emm"><script type="text/javascript">
+						$(document).ready(function () {
+							$('#emm').load('loademail.php');
+						})
+					</script></h3>
+		              		</div>
+
+		             <form class="emailform" action="updateemail.php" method="post">
+		       	  	<input type="email" name="email" placeholder="email">
+
+		       	<input type="submit"  value="Update" 
+						    style="width: 50%;height: 35px; border-radius: 20px;
+						    font-family: inter;color: white;background: rgb(34, 2, 49);
+						     outline: none;border: none;">
+
+						      <input type="button"  value="cancle" 
+						    style="width: 50%;height: 35px; border-radius: 20px;
+						    font-family: inter;color: white;background: rgb(34, 2, 49);
+						     outline: none;border: none;" onclick="showem('close')">
+                           </form>
+
+
+		             <div class="columa" onclick="showpass('open')">
+		                <h3>change password</h3>
+				        
+		              		</div>
+
+
+		              		   <form class="passform" action="updateemail.php" method="post">
+		       	  	<input type="email" name="email" placeholder="email">
+		       	  	<input type="password" name="password" placeholder="password">
+		      	<input type="submit" name="sub" value="Update" 
+						    style="width: 50%;height: 35px; border-radius: 20px;
+						    font-family: inter;color: white;background: rgb(34, 2, 49);
+						     outline: none;border: none;">
+
+						        <input type="button"  value="cancle" 
+						    style="width: 50%;height: 35px; border-radius: 20px;
+						    font-family: inter;color: white;background: rgb(34, 2, 49);
+						     outline: none;border: none;" onclick="showpass('close')">
+		       </form>
+
+
+
+		             <div class="columa" onclick="showloc('open')">
+		             	<p>location</p>
+		                <h3 id="ll"><script type="text/javascript">
+						$(document).ready(function () {
+							$('#ll').load('loadlocation.php');
+						})
+					</script></h3>
+				          
+		              		</div>
+
+
+		              <form class="locationform" action="updateocati.php" method="post">
+		       	  	<input type="text" name="location" placeholder="country">
+		      	<input type="submit" name="sub" value="Update" 
+						    style="width: 50%;height: 35px; border-radius: 20px;
+						    font-family: inter;color: white;background: rgb(34, 2, 49);
+						     outline: none;border: none;">
+
+						        <input type="button"  value="cancle" 
+						    style="width: 50%;height: 35px; border-radius: 20px;
+						    font-family: inter;color: white;background: rgb(34, 2, 49);
+						     outline: none;border: none;" onclick="showloc('close')">
+		       </form>
+
+
+
+		             <div class="columa">
+		                <h3>deactivate</h3>
+				          <p>delect acccount</p>
+		              		</div>
+
+
+   		<button type="button" style="width: 60%; margin-top: 30px;height: 40px;
+   		outline: none;  font-family: sans-serif;color: white;background: rgb(34, 2, 49);
+   		font-weight: bold; border-radius: 20px;" onclick="openacount('close')">Back</button>
+		              	</div>
+
+		              </div>
+
+		              <!-----------------------------------loadind detail---------------------------------------------------------------------->
+		              <script type="text/javascript">
+		              	$(document).ready(function () {
+		              		$('.loadindeatail').load('detail.php');
+		              		
+		              	})
+		              </script>
+		              <!-----------------------------------------------------detailload------------------------------------>
+		               <div class="detail">
+		              	
+		              </div>
+
+
+		              <!------------------------------------this are is for friend------------------------------------------->
+		              <div class="friends">
+		              	<div class="friendhead">
+		              		<label class="fa fa-times" onclick="showfrind('close')"></label>
+		              		<i class=" fa fa-users" onclick="openfinff('open')"></i>
+		              	</div>
+		              	<div class="ffbt">
+		              		<button type="button" onclick="ff('following')">Following</button>
+		              		<button type="button" onclick="ff('follower')">Follower</button>
+		              	</div>
+		              	<div class="friendbody">
+		              		<!-------------------------------this are is following------------------------------------>
+		              		<div class="following">
+		              				<script type="text/javascript">
+		              				$(document).ready(function () {
+		              					$('.following').load('fetchfollowing.php');
+		              				})
+		              			</script>
+		              		</div>
+		              		<!----------------------------------------------this area is for follower---------------------------------->
+		              		<div class="follower">
+		              			<script type="text/javascript">
+		              				$(document).ready(function () {
+		              					$('.follower').load('fetchfollower.php');
+		              				})
+		              			</script>
+		              		</div>
+		              	</div>
+		              </div>
+		              <!--------------------------------------------find follower- also know as find frineds----------------------------------------------------------->
+		              <div class="findfriend">
+		              	<div class="findfriendhead">
+		              		<i class=" fa fa-times" onclick="openfinff('close')"></i>
+		              		<h3>suggested for you</h3>
+		              	</div>
+		              	<div class="findfriendbody">
+		              		<script type="text/javascript">
+		              			$(document).ready(function () {
+		              				$('.findfriendbody').load('findfriend.php');
+		              			})
+		              		</script>
+		              	</div>
+		              </div>
+	</main>
+<script type="text/javascript" src="java/java.js"></script>
+</body>
+</html>
